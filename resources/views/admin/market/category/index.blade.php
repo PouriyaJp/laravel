@@ -24,9 +24,9 @@
                     </h5>
                 </section>
 
-                <section class="d-flex justify-content-between align-items-center mt-4 mb-3 border-bottom">
-                    <a href="#" class="btn btn-info btn-sm">ایجاد دسته بندی</a>
-                    <div class="width-16-rem">
+                <section class="d-flex justify-content-between align-items-center mt-4 mb-3 border-bottom pb-2">
+                    <a href="#" class="btn btn-info btn-sm font-size-12">ایجاد دسته بندی</a>
+                    <div class="max-width-16-rem">
                         <input type="text" class="form-control form-control-sm form-text" placeholder="جستجو">
                     </div>
                 </section>
@@ -34,39 +34,39 @@
                 <section class="table-responsive">
                     <table class="table table-striped table-hover">
                         <thead>
-                        <tr>
+                        <tr class="font-size-12">
                             <th>#</th>
                             <th>نام دسته بندی</th>
                             <th>دسته والد</th>
-                            <th><i class="fa fa-cogs"></i>تنظیمات</th>
+                            <th class="text-align"><i class="fa fa-cogs ml-1"></i>تنظیمات</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
+                        <tr class="font-size-12">
                             <th>1</th>
                             <td>نمایشگر	</td>
                             <td>کالای الکترونیکی</td>
-                            <td>
-                                <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i>ویرایش</a>
-                                <button class="btn btn-danger btn-sm" type="submit"><i class="fa fa-trash-alt"></i>حذف</button>
+                            <td class="text-align">
+                                <a href="#" class="btn btn-primary btn-sm font-size-12"><i class="fa fa-edit ml-1"></i>ویرایش</a>
+                                <button class="btn btn-danger btn-sm font-size-12" type="submit"><i class="fa fa-trash-alt ml-1"></i>حذف</button>
                             </td>
                         </tr>
-                        <tr>
+                        <tr class="font-size-12">
                             <th>2</th>
                             <td>نمایشگر	</td>
                             <td>کالای الکترونیکی</td>
-                            <td>
-                                <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i>ویرایش</a>
-                                <button class="btn btn-danger btn-sm" type="submit"><i class="fa fa-trash-alt"></i>حذف</button>
+                            <td class="text-align">
+                                <a href="#" class="btn btn-primary btn-sm font-size-12"><i class="fa fa-edit ml-1"></i>ویرایش</a>
+                                <button class="btn btn-danger btn-sm font-size-12" type="submit"><i class="fa fa-trash-alt ml-1"></i>حذف</button>
                             </td>
                         </tr>
-                        <tr>
+                        <tr class="font-size-12">
                             <th>3</th>
                             <td>نمایشگر	</td>
                             <td>کالای الکترونیکی</td>
-                            <td>
-                                <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i>ویرایش</a>
-                                <button class="btn btn-danger btn-sm" type="submit"><i class="fa fa-trash-alt"></i>حذف</button>
+                            <td class="text-align">
+                                <a href="#" class="btn btn-primary btn-sm font-size-12"><i class="fa fa-edit ml-1"></i>ویرایش</a>
+                                <button class="btn btn-danger btn-sm font-size-12" type="submit"><i class="fa fa-trash-alt ml-1"></i>حذف</button>
                             </td>
                         </tr>
                         </tbody>
