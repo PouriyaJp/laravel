@@ -34,41 +34,49 @@
                 <section class="table-responsive">
                     <table class="table table-striped table-hover">
                         <thead>
-                        <tr class="font-size-12">
-                            <th>#</th>
-                            <th>نام دسته بندی</th>
-                            <th>دسته والد</th>
-                            <th class="text-align"><i class="fa fa-cogs ml-1"></i>تنظیمات</th>
-                        </tr>
+                            <tr class="font-size-12">
+                                <th>#</th>
+                                <th>نام دسته بندی</th>
+                                <th>توضیحات</th>
+                                <th>اسلاگ</th>
+                                <th>عکس</th>
+                                <th>تگ ها</th>
+                                <th>وضعیت</th>
+                                <th class="text-align"><i class="fa fa-cogs ml-1"></i>تنظیمات</th>
+                            </tr>
                         </thead>
                         <tbody>
-                        <tr class="font-size-12">
-                            <th>1</th>
-                            <td>نمایشگر	</td>
-                            <td>کالای الکترونیکی</td>
-                            <td class="text-align">
-                                <a href="#" class="btn btn-primary btn-sm font-size-12"><i class="fa fa-edit ml-1"></i>ویرایش</a>
-                                <button class="btn btn-danger btn-sm font-size-12" type="submit"><i class="fa fa-trash-alt ml-1"></i>حذف</button>
-                            </td>
-                        </tr>
-                        <tr class="font-size-12">
-                            <th>2</th>
-                            <td>نمایشگر	</td>
-                            <td>کالای الکترونیکی</td>
-                            <td class="text-align">
-                                <a href="#" class="btn btn-primary btn-sm font-size-12"><i class="fa fa-edit ml-1"></i>ویرایش</a>
-                                <button class="btn btn-danger btn-sm font-size-12" type="submit"><i class="fa fa-trash-alt ml-1"></i>حذف</button>
-                            </td>
-                        </tr>
-                        <tr class="font-size-12">
-                            <th>3</th>
-                            <td>نمایشگر	</td>
-                            <td>کالای الکترونیکی</td>
-                            <td class="text-align">
-                                <a href="#" class="btn btn-primary btn-sm font-size-12"><i class="fa fa-edit ml-1"></i>ویرایش</a>
-                                <button class="btn btn-danger btn-sm font-size-12" type="submit"><i class="fa fa-trash-alt ml-1"></i>حذف</button>
-                            </td>
-                        </tr>
+
+                            @foreach($postCategories as $postCategory)
+
+                            <tr class="font-size-12">
+                                <th>1</th>
+                                <td>{{ $postCategory->name }}	</td>
+                                <td>{{ $postCategory->description }}</td>
+                                <td>{{ $postCategory->slug }}</td>
+                                <td>
+                                    <img src="{{ asset($postCategory->image) }}" alt="" style="width: 40px;height: 40px;">
+                                </td>
+                                <td>{{ $postCategory->tags }}</td>
+                                <td>
+                                    <label for="">
+                                        <input type="checkbox" @if($postCategory->status === 1) checked @endif >
+
+
+                                    </label>
+                                </td>
+                                <td class="text-align">
+                                    <a href="{{ route('admin.content.category.edit', $postCategory->id) }}" class="btn btn-primary btn-sm font-size-12"><i class="fa fa-edit ml-1"></i>ویرایش</a>
+                                    <form class="d-inline" action="{{ route('admin.content.category.destroy', $postCategory->id) }}" method="POST">
+                                        @csrf
+                                        {{ method_field('delete') }}
+                                        <button class="btn btn-danger btn-sm font-size-12" type="submit"><i class="fa fa-trash-alt ml-1"></i>حذف</button>
+                                    </form>
+                                </td>
+                            </tr>
+
+                            @endforeach
+
                         </tbody>
                     </table>
                 </section>
