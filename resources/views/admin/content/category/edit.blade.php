@@ -73,6 +73,24 @@
 
                             <section class="col-12 col-md-6 my-2">
                                 <div class="form-group font-size-12">
+                                    <label for="image">تصویر</label>
+                                    <input type="file" class="form-control form-control-sm font-size-12" name="image" id="image">
+                                </div>
+
+                                @error('image')
+                                <span class="alert_required bg-danger text-white p-1 rounded font-size-12" role="alert">
+                                        <strong>
+                                            {{ $message }}
+                                        </strong>
+                                    </span>
+                                @enderror
+
+
+
+                            </section>
+
+                            <section class="col-12 col-md-6 my-2">
+                                <div class="form-group font-size-12">
                                     <label for="status">وضعیت</label>
                                     <select name="status" id="status" class="form-control form-control-sm">
                                         <option value="0" @if(old('status',$postCategory->status) == 0) selected @endif>غیر فعال</option>
@@ -90,21 +108,36 @@
 
                             </section>
 
-                            <section class="col-12 col-md-6 my-2">
-                                <div class="form-group font-size-12">
-                                    <label for="image">تصویر</label>
-                                    <input type="file" class="form-control form-control-sm font-size-12" name="image" id="image">
-                                </div>
+                            <section class="row" style="flex-direction: row-reverse;width: 55%">
 
-                                @error('image')
-                                <span class="alert_required bg-danger text-white p-1 rounded font-size-12" role="alert">
-                                        <strong>
-                                            {{ $message }}
-                                        </strong>
-                                    </span>
-                                @enderror
+                                @php
+                                    $number = 1;
+                                @endphp
 
+                                @foreach ($postCategory->image['indexArray'] as $key => $value)
+
+                                    <section class="col-md-{{ 6/$number }}">
+
+                                        <div class="form-check">
+                                            <input type="radio" class="form-check-input" name="currentImage" value="{{ $key }}" id="{{ $number }}" @if($postCategory->image['currentImage'] == $key) checked @endif>
+                                            <label for="{{ $number }}" class="form-check-label mx-2">
+                                                <img src="{{ asset($value) }}" class="w-100" alt="">
+                                            </label>
+                                        </div>
+
+                                    </section>
+
+                                    @php
+
+                                        $number++;
+
+                                    @endphp
+                                @endforeach
                             </section>
+
+
+
+
 
                             <section class="col-12">
                                 <div class="form-group font-size-12">

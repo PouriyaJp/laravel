@@ -49,15 +49,15 @@
                         </thead>
                         <tbody>
 
-                            @foreach($postCategories as $postCategory)
+                            @foreach($postCategories as $key => $postCategory)
 
                             <tr class="font-size-12">
-                                <th>1</th>
+                                <th>{{ $key += 1 }}</th>
                                 <td>{{ $postCategory->name }}	</td>
                                 <td>{{ $postCategory->description }}</td>
                                 <td>{{ $postCategory->slug }}</td>
                                 <td>
-                                    <img src="{{ asset($postCategory->image) }}" alt="" style="width: 40px;height: 40px;">
+                                    <img src="{{ asset($postCategory->image['indexArray'][$postCategory->image['currentImage']]) }}" alt="" style="width: 40px;height: 40px;">
                                 </td>
                                 <td>{{ $postCategory->tags }}</td>
                                 <td>
