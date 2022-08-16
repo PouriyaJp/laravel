@@ -134,7 +134,7 @@ return [
         "hour"                      => "ساعت",
         "minute"                    => "دقیقه",
         "second"                    => "ثانیه",
-        "title"                     => "عنوان کالا",
+        "title"                     => "عنوان",
         "text"                      => "متن",
         "content"                   => "محتوا",
         "description"               => "توضیحات کالا",
@@ -158,6 +158,9 @@ return [
         "category_id"               => "دسته بندی",
         "status"                    => "وضعیت",
         "tags"                      => "برچسب ها",
+        "summery"                   => "خلاصه",
+        "question"                  => "پرسش",
+        "answer"                    => "پاسخ",
 
     ],
 ];
