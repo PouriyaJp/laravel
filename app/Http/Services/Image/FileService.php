@@ -5,7 +5,7 @@ namespace App\Http\Services\Image;
 use Illuminate\Support\Facades\Config;
 use Intervention\Image\Facades\Image;
 
-class ImageService extends ImageToolsService
+class FileService extends FileToolsService
 {
     public function save($image)
     {

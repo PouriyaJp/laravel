@@ -11,4 +11,14 @@ class Menu extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = ['name', 'url', 'parent_id', 'status'];
+
+    public function parent()
+    {
+        return $this->belongsTo($this, 'parent_id')->with('parent');
+    }
+
+//    public function children()
+//    {
+//        return $this->hasMany($this, 'parent_id')->with('children');
+//    }
 }

@@ -161,6 +161,12 @@ return [
         "summery"                   => "خلاصه",
         "question"                  => "پرسش",
         "answer"                    => "پاسخ",
+        "parent_id"                 => "پاسخ",
+        "url"                       => "آدرس",
+        "subject"                   => "موضوع",
+        "keywords"                  => "کلمات کلیدی",
+        "logo"                      => "لوگو",
+        "icon"                      => "آیکون",
 
     ],
 ];

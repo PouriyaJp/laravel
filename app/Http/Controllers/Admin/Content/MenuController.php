@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Content;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Content\MenuRequest;
 use App\Models\Content\Menu;
 use Illuminate\Http\Request;
 
@@ -26,7 +27,8 @@ class MenuController extends Controller
      */
     public function create()
     {
-        return view('admin.content.menu.create');
+        $menus = Menu::where('parent_id', null)->get();
+        return view('admin.content.menu.create', compact('menus'));
     }
 
     /**
@@ -35,9 +37,11 @@ class MenuController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(MenuRequest $request)
     {
-        //
+        $inputs = $request->all();
+        $menu = Menu::create($inputs);
+        return redirect()->route('admin.content.menu.index')->with('swal-success', 'منو جدید شما با موفقیت ثبت شد');
     }
 
     /**
@@ -57,9 +61,10 @@ class MenuController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Menu $menu)
     {
-        //
+        $parent_menus = Menu::where('parent_id', null)->get()->except($menu->id);
+        return view('admin.content.menu.edit', compact('menu', 'parent_menus'));
     }
 
     /**
@@ -69,9 +74,11 @@ class MenuController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(MenuRequest $request, Menu $menu)
     {
-        //
+        $inputs = $request->all();
+        $menu->update($inputs);
+        return redirect()->route('admin.content.menu.index')->with('swal-success', 'منو جدید شما با موفقیت ویرایش شد');
     }
 
     /**
@@ -80,9 +87,10 @@ class MenuController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Menu $menu)
     {
-        //
+        $result = $menu->delete();
+        return redirect()->route('admin.content.menu.index')->with('swal-success', 'فهرست شما با موفقیت حذف شد');
     }
 
     public function status(Menu $menu)
