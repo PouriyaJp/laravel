@@ -32,7 +32,7 @@
                     <i class="fas fa-angle-left angle"></i>
                 </section>
                 <section class="sidebar-dropdown">
-                    <a href="{{ route('admin.market.order.newOrder') }}"> جدید</a>
+                    <a href="{{ route('admin.market.order.newOrders') }}"> جدید</a>
                     <a href="{{ route('admin.market.order.sending') }}">در حال ارسال</a>
                     <a href="{{ route('admin.market.order.unpaid') }}">پرداخت نشده</a>
                     <a href="{{ route('admin.market.order.canceled') }}">باطل شده</a>
@@ -49,9 +49,9 @@
                 </section>
                 <section class="sidebar-dropdown">
                     <a href="{{ route('admin.market.payment.index') }}">تمام پرداخت ها</a>
-                    <a href="{{ route('admin.market.payment.online') }}">پرداخت های آنلاین</a>
-                    <a href="{{ route('admin.market.payment.offline') }}">پرداخت های آفلاین</a>
-                    <a href="{{ route('admin.market.payment.attendance') }}">پرداخت در محل</a>
+                    <a href="{{ route('admin.market.payment.index') }}">پرداخت های آنلاین</a>
+                    <a href="{{ route('admin.market.payment.index') }}">پرداخت های آفلاین</a>
+                    <a href="{{ route('admin.market.payment.index') }}">پرداخت در محل</a>
                 </section>
             </section>
 
@@ -120,17 +120,33 @@
 
 
             <section class="sidebar-part-title">تیکت ها</section>
-            <a href="{{ route('admin.ticket.newTicket') }}" class="sidebar-link">
+            <a href="{{ route('admin.ticket.category.index') }}" class="sidebar-link">
+                <i class="fas fa-bars"></i>
+                <span> دسته بندی تیکت ها </span>
+            </a>
+            <a href="{{ route('admin.ticket.priority.index') }}" class="sidebar-link">
+                <i class="fas fa-bars"></i>
+                <span> اولویت تیکت ها </span>
+            </a>
+            <a href="{{ route('admin.ticket.admin.index') }}" class="sidebar-link">
+                <i class="fas fa-bars"></i>
+                <span> ادمین تیکت ها </span>
+            </a>
+            <a href="{{ route('admin.ticket.newTickets') }}" class="sidebar-link">
                 <i class="fas fa-bars"></i>
                 <span>تیکت های جدید</span>
             </a>
-            <a href="{{ route('admin.ticket.openTicket') }}" class="sidebar-link">
+            <a href="{{ route('admin.ticket.openTickets') }}" class="sidebar-link">
                 <i class="fas fa-bars"></i>
                 <span>تیکت های باز</span>
             </a>
-            <a href="{{ route('admin.ticket.closeTicket') }}" class="sidebar-link">
+            <a href="{{ route('admin.ticket.closeTickets') }}" class="sidebar-link">
                 <i class="fas fa-bars"></i>
                 <span>تیکت های بسته</span>
+            </a>
+            <a href="{{ route('admin.ticket.index') }}" class="sidebar-link">
+                <i class="fas fa-bars"></i>
+                <span>همه تیکت ها</span>
             </a>
 
 

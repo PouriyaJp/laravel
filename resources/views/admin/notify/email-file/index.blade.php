@@ -27,6 +27,9 @@
 
             <section class="d-flex justify-content-between align-items-center mt-4 mb-3 border-bottom pb-2">
                 <a href="{{ route('admin.notify.email-file.create', $email->id) }}" class="btn btn-info btn-sm">ایجاد فایل اطلاعیه ایمیلی</a>
+                <div style="margin-left: 654px;">
+                    <a href="{{ route('admin.notify.email.index') }}" class="btn btn-info btn-sm">بازگشت</a>
+                </div>
                 <div class="max-width-16-rem">
                     <input type="text" class="form-control form-control-sm form-text" placeholder="جستجو">
                 </div>
@@ -51,7 +54,7 @@
                             <th>{{ $key + 1 }}</th>
                             <td>{{ $email->subject }}</td>
                             <td>{{ $file->file_size }}</td>
-                            <td>{{ $email->file_type }}</td>
+                            <td>{{ $file->file_type }}</td>
                             <td>
                                 <label>
                                     <input id="{{ $file->id }}" onchange="changeStatus({{ $file->id }})" data-url="{{ route('admin.notify.email-file.status', $file->id) }}" type="checkbox" @if ($file->status === 1)
@@ -60,8 +63,8 @@
                                 </label>
                             </td>
                             <td class="width-16-rem text-left">
-                                <a href="{{ route('admin.notify.email.edit', $email->id) }}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i> ویرایش</a>
-                                <form class="d-inline" action="{{ route('admin.notify.email.destroy', $email->id) }}" method="post">
+                                <a href="{{ route('admin.notify.email-file.edit', $file->id) }}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i> ویرایش</a>
+                                <form class="d-inline" action="{{ route('admin.notify.email-file.destroy', $file->id) }}" method="post">
                                     @csrf
                                     {{ method_field('delete') }}
                                 <button class="btn btn-danger btn-sm delete" type="submit"><i class="fa fa-trash-alt"></i> حذف</button>
@@ -97,11 +100,11 @@
                     if(response.status){
                         if(response.checked){
                             element.prop('checked', true);
-                            successToast('ایمیل  با موفقیت فعال شد')
+                            successToast('فایل با موفقیت فعال شد')
                         }
                         else{
                             element.prop('checked', false);
-                            successToast('ایمیل  با موفقیت غیر فعال شد')
+                            successToast('فایل با موفقیت غیر فعال شد')
                         }
                     }
                     else{

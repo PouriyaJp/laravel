@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin\Notify;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Notify\EmailFileRequest;
+use App\Http\Services\File\FileService;
 use App\Models\Notify\Email;
 use App\Models\Notify\EmailFile;
 use Illuminate\Http\Request;
@@ -24,9 +26,9 @@ class EmailFileController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Email $email)
     {
-        //
+        return view('admin.notify.email-file.create', compact('email'));
     }
 
     /**
@@ -35,9 +37,31 @@ class EmailFileController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(EmailFileRequest $request, Email $email, FileService $fileService)
     {
-        //
+        $inouts = $request->all();
+
+        if ($request->hasFile('file')) {
+            $fileService->setExclusiveDirectory('files' . DIRECTORY_SEPARATOR . 'email-files');
+            $fileService->setFileSize($request->file('file'));
+            $fileSize = $fileService->getFileSize();
+            $result = $fileService->moveToPublic($request->file('file'));
+            //if ypu want save file to storage
+            //$result = $fileService->moveToStorage($request->file('file'));
+            $fileFormat = $fileService->getFileFormat();
+
+            if ($result === false) {
+                return redirect()->route('admin.notify.email-file.index', $email->id)->with('swal-error', 'آپلود فایل با خطا مواجه شد');
+            }
+
+            $inputs['public_mail_id'] = $email->id;
+            $inputs['file_path'] = $result;
+            $inputs['file_size'] = $fileSize;
+            $inputs['file_type'] = $fileFormat;
+        }
+
+        $file = EmailFile::create($inputs);
+        return redirect()->route('admin.notify.email-file.index', $email->id)->with('swal-success', 'فایل جدید شما با موفقیت ثبت شد');
     }
 
     /**
@@ -57,9 +81,9 @@ class EmailFileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(EmailFile $file)
     {
-        //
+        return view('admin.notify.email-file.edit', compact('file'));
     }
 
     /**
@@ -69,9 +93,34 @@ class EmailFileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(EmailFileRequest $request, EmailFile $file, FileService $fileService)
     {
-        //
+        $inputs = $request->all();
+
+        if ($request->hasFile('file')) {
+            if (!empty($file->file_path)){
+
+                //save file to storage
+                //$fileService->deleteFile($file->file_path, true);
+
+                //save file in public
+                $fileService->deleteFile($file->file_path);
+            }
+            $fileService->setExclusiveDirectory('files' . DIRECTORY_SEPARATOR . 'email-files');
+            $fileService->setFileSize($request->file('file'));
+            $fileSize = $fileService->getFileSize();
+            $result = $fileService->moveToPublic($request->file('file'));
+            $fileFormat = $fileService->getFileFormat();
+            if ($result === false) {
+                return redirect()->route('admin.notify.email-file.index', $file->email->id)->with('swal-error', 'آپلود فایل با خطا مواجه شد');
+            }
+            $inputs['file_path'] = $result;
+            $inputs['file_size'] = $fileSize;
+            $inputs['file_type'] = $fileFormat;
+
+        }
+        $file->update($inputs);
+        return redirect()->route('admin.notify.email-file.index', $file->email->id)->with('swal-success', 'فایل جدید شما با موفقیت ویرایش شد');
     }
 
     /**
@@ -80,20 +129,21 @@ class EmailFileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(EmailFile $file)
     {
-        //
+        $result = $file->delete();
+        return redirect()->route('admin.notify.email-file.index', $file->email->id)->with('swal-success', 'فایل شما با موفقیت حذف شد');
     }
 
-    public function status(EmailFile $emailFile)
+    public function status(EmailFile $file)
     {
-        $emailFile->status = $emailFile->status == 0 ? 1 : 0;
+        $file->status = $file->status == 0 ? 1 : 0;
 
-        $result = $emailFile->save();
+        $result = $file->save();
 
         if ($result){
 
-            if ($emailFile->status == 0){
+            if ($file->status == 0){
                 return response()->json(['status' => true, 'checked' => false]);
             }
             else {

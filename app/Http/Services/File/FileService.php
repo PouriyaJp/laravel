@@ -31,11 +31,21 @@ class FileService extends FileToolsService
         return $result ? $this->getFileAddress() : false;
     }
 
-    public function deleteFile($filePath)
+    public function deleteFile($filePath, $storage = false)
     {
+
+        if ($storage){
+            unlink(storage_path($filePath));
+            return true;
+        }
+
         if (file_exists($filePath))
         {
             unlink($filePath);
+            return true;
+        }
+        else{
+            return false;
         }
     }
 

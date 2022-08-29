@@ -106,14 +106,6 @@ class FileToolsService
     }
 
     /**
-     * @return mixed
-     */
-    public function getFinalFileName()
-    {
-        return $this->fileSize;
-    }
-
-    /**
      * @param mixed $fileSize
      */
     public function setFileSize($file): void
@@ -126,7 +118,7 @@ class FileToolsService
      */
     public function getFileSize()
     {
-        return $this->finalFileName;
+        return $this->fileSize;
     }
 
     /**
@@ -135,6 +127,14 @@ class FileToolsService
     public function setFinalFileName($finalFileName): void
     {
         $this->finalFileName = $finalFileName;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFinalFileName()
+    {
+        return $this->finalFileName;
     }
 
     protected function checkDirectory($fileDirectory)
