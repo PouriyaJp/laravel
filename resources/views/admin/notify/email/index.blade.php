@@ -64,8 +64,9 @@
                                 <form class="d-inline" action="{{ route('admin.notify.email.destroy', $email->id) }}" method="post">
                                     @csrf
                                     {{ method_field('delete') }}
-                                <button class="btn btn-danger btn-sm delete" type="submit"><i class="fa fa-trash-alt"></i> حذف</button>
-                            </form>                            </td>
+                                    <button class="btn btn-danger btn-sm delete" type="submit"><i class="fa fa-trash-alt"></i> حذف</button>
+                                </form>
+                            </td>
                         </tr>
 
                         @endforeach
