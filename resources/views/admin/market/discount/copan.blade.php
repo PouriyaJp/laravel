@@ -25,14 +25,14 @@
             </section>
 
             <section class="d-flex justify-content-between align-items-center mt-4 mb-3 border-bottom pb-2">
-                <a href="{{ route('admin.market.discount.copan.create') }}" class="btn btn-info btn-sm font-size-12">ایجاد کوپن تخفیف</a>
+                <a href="{{ route('admin.market.discount.copan.create') }}" class="btn btn-info btn-sm">ایجاد کوپن تخفیف</a>
                 <div class="max-width-16-rem">
                     <input type="text" class="form-control form-control-sm form-text" placeholder="جستجو">
                 </div>
             </section>
 
             <section class="table-responsive">
-                <table class="table table-striped table-hover font-size-12">
+                <table class="table table-striped table-hover">
                     <thead>
                         <tr>
                             <th>#</th>
@@ -55,8 +55,8 @@
                             <td>22 بهمن 99</td>
                             <td>22 بهمن 99</td>
                             <td class="width-16-rem text-left">
-                                <a href="#" class="btn btn-primary btn-sm font-size-12"><i class="fa fa-edit"></i> ویرایش</a>
-                                <button class="btn btn-danger btn-sm font-size-12" type="submit"><i class="fa fa-trash-alt"></i> حذف</button>
+                                <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> ویرایش</a>
+                                <button class="btn btn-danger btn-sm" type="submit"><i class="fa fa-trash-alt"></i> حذف</button>
                             </td>
                         </tr>
                     </tbody>

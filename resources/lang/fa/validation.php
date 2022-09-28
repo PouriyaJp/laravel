@@ -177,6 +177,14 @@ return [
         "height"                    => "ارتفاع",
         "price"                     => "قیمت",
         "introduction"              => "توضیحات",
+        "unit"                      => "واحد اندازگیری",
+        'receiver'                  => 'تحویل گیرنده',
+        'deliverer'                 => 'تحویل دهنده',
+        'marketable_number'         => 'تعداد',
+        'percentage'                => 'درصد',
+        'discount_ceiling'          => 'سقف تخفیف',
+        'minimal_order_amount'      => 'حداقل مبلغ',
+        'product_id'                => 'کالا',
 
     ],
 ];

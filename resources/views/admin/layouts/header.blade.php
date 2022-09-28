@@ -23,6 +23,7 @@
                         <i id="screen-compress" class="fas fa-compress d-none"></i>
                         <i id="screen-expand" class="fas fa-expand "></i>
                     </span>
+                <a href=""></a>
             </section>
             <section>
                     <span class="ml-2 ml-md-4 position-relative">

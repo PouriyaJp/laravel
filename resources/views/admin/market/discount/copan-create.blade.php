@@ -26,7 +26,7 @@
             </section>
 
             <section class="d-flex justify-content-between align-items-center mt-4 mb-3 border-bottom pb-2">
-                <a href="{{ route('admin.market.discount.copan') }}" class="btn btn-info btn-sm font-size-12">بازگشت</a>
+                <a href="{{ route('admin.market.discount.copan') }}" class="btn btn-info btn-sm">بازگشت</a>
             </section>
 
             <section>
@@ -34,13 +34,13 @@
                     <section class="row">
 
                         <section class="col-12 col-md-6">
-                            <div class="form-group font-size-12">
+                            <div class="form-group">
                                 <label for="">کد کوپن</label>
                                 <input type="text" class="form-control form-control-sm">
                             </div>
                         </section>
                         <section class="col-12 col-md-6">
-                            <div class="form-group font-size-12">
+                            <div class="form-group">
                                 <label for="">نوع کوپن</label>
                                 <select name="" id="" class="form-control form-control-sm">
                                     <option value="">عمومی</option>
@@ -49,38 +49,38 @@
                             </div>
                         </section>
                         <section class="col-12 col-md-6">
-                            <div class="form-group font-size-12">
+                            <div class="form-group">
                                 <label for="">درصد تخفیف</label>
                                 <input type="text" class="form-control form-control-sm">
                             </div>
                         </section>
                         <section class="col-12 col-md-6">
-                            <div class="form-group font-size-12">
+                            <div class="form-group">
                                 <label for="">حداکثر تخفیف</label>
                                 <input type="text" class="form-control form-control-sm">
                             </div>
                         </section>
                         <section class="col-12 col-md-6">
-                            <div class="form-group font-size-12">
+                            <div class="form-group">
                                 <label for="">عنوان مناسبت</label>
                                 <input type="text" class="form-control form-control-sm">
                             </div>
                         </section>
                         <section class="col-12 col-md-6">
-                            <div class="form-group font-size-12">
+                            <div class="form-group">
                                 <label for="">تاریخ شروع</label>
                                 <input type="text" class="form-control form-control-sm">
                             </div>
                         </section>
                         <section class="col-12 col-md-6">
-                            <div class="form-group font-size-12">
+                            <div class="form-group">
                                 <label for="">تاریخ پایان</label>
                                 <input type="text" class="form-control form-control-sm">
                             </div>
                         </section>
 
 
-                        <section class="col-12 font-size-12">
+                        <section class="col-12">
                             <button class="btn btn-primary btn-sm">ثبت</button>
                         </section>
                     </section>
