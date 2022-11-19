@@ -185,6 +185,9 @@ return [
         'discount_ceiling'          => 'سقف تخفیف',
         'minimal_order_amount'      => 'حداقل مبلغ',
         'product_id'                => 'کالا',
+        'code'                      => 'کد تخفیف',
+        'user_id'                   => 'کاربر',
+        'type'                      => 'نوع کوپن',
 
     ],
 ];
