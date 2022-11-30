@@ -20,6 +20,7 @@ use App\Http\Controllers\Admin\Market\PropertyValueController;
 use App\Http\Controllers\Admin\Market\StoreController;
 use App\Http\Controllers\Admin\Content\CategoryController as ContentCategoryController;
 use App\Http\Controllers\Admin\Content\CommentController as ContentCommentController;
+use App\Http\Controllers\Admin\NotificationController;
 use App\Http\Controllers\Admin\Notify\EmailController;
 use App\Http\Controllers\Admin\Notify\EmailFileController;
 use App\Http\Controllers\Admin\Notify\SMSController;
@@ -32,6 +33,7 @@ use App\Http\Controllers\Admin\User\AdminUserController;
 use App\Http\Controllers\Admin\User\CustomerController;
 use App\Http\Controllers\Admin\User\PermissionController;
 use App\Http\Controllers\Admin\User\RoleController;
+use App\Http\Controllers\Auth\Customer\LoginRegisterController;
 use App\Models\Market\ProductColor;
 use Illuminate\Support\Facades\Route;
 
@@ -485,7 +487,21 @@ Route::prefix('admin')->namespace('Admin')->group(function (){
 
     });
 
+    Route::post('/notification/read-all', [NotificationController::class, 'readAll'])->name('admin.notification.readAll');
 });
+
+// Route for Auth
+
+Route::namespace('Auth')->group(function (){
+    Route::get('login-register', [LoginRegisterController::class, 'loginRegisterForm'])->name('auth.customer.login-register-form');
+    Route::post('/login-register', [LoginRegisterController::class, 'loginRegister'])->name('auth.customer.login-register');
+});
+
+// Route for View
+
+Route::get('/', function (){
+    return view('customer.home');
+})->name('customer.home');
 
 Route::middleware([
     'auth:sanctum',
