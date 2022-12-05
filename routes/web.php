@@ -194,7 +194,7 @@ Route::prefix('admin')->namespace('Admin')->group(function (){
             Route::get('/color/{product}', [ProductColorController::class, 'index'])->name('admin.market.color.index');
             Route::get('/color/create/{product}', [ProductColorController::class, 'create'])->name('admin.market.color.create');
             Route::post('/color/store/{product}', [ProductColorController::class, 'store'])->name('admin.market.color.store');
-            Route::delete('/color/destroy/{product}/{productColor}', [ProductColorController::class, 'destroy'])->name('admin.market.color.destroy');
+            Route::delete('/color/destroy/{product}/{color}', [ProductColorController::class, 'destroy'])->name('admin.market.color.destroy');
             //guarantee
             Route::get('/guarantee/{product}', [GuaranteeController::class, 'index'])->name('admin.market.guarantee.index');
             Route::get('/guarantee/create/{product}', [GuaranteeController::class, 'create'])->name('admin.market.guarantee.create');
