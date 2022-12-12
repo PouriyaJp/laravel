@@ -37,6 +37,7 @@ use App\Http\Controllers\Admin\User\PermissionController;
 use App\Http\Controllers\Admin\User\RoleController;
 use App\Http\Controllers\Auth\Customer\LoginRegisterController;
 use App\Http\Controllers\Customer\HomeController;
+use App\Http\Controllers\Customer\Market\ProductController as CustomerProductController;
 use App\Models\Market\ProductColor;
 use Illuminate\Support\Facades\Route;
 
@@ -514,17 +515,28 @@ Route::prefix('admin')->namespace('Admin')->group(function (){
 // Route for Auth
 
 Route::namespace('Auth')->group(function (){
+
     Route::get('login-register', [LoginRegisterController::class, 'loginRegisterForm'])->name('auth.customer.login-register-form');
     Route::middleware('throttle:customer-login-register-limiter')->post('/login-register', [LoginRegisterController::class, 'loginRegister'])->name('auth.customer.login-register');
     Route::get('login-confirm/{token}', [LoginRegisterController::class, 'loginConfirmForm'])->name('auth.customer.login-confirm-form');
     Route::middleware('throttle:customer-login-confirm-limiter')->post('/login-confirm/{token}', [LoginRegisterController::class, 'loginConfirm'])->name('auth.customer.login-confirm');
     Route::middleware('customer-login-resend-otp-limiter')->get('/login-resend-otp/{token}', [LoginRegisterController::class, 'loginResendOtp'])->name('auth.customer.login-resend-otp');
     Route::get('/logout', [LoginRegisterController::class, 'logout'])->name('auth.customer.logout');
+
 });
 
 // Route for View
 
 Route::get('/', [HomeController::class, 'home'])->name('customer.home');
+
+// Route for Product page
+Route::namespace('Market')->group(function (){
+
+    Route::get('/product/{product:slug}', [CustomerProductController::class, 'product'])->name('customer.market.product');
+    Route::post('/add-comment/product/{product:slug}', [CustomerProductController::class, 'addComment'])->name('customer.market.add-comment');
+    Route::get('/add-to-favorite/product/{product:slug}', [CustomerProductController::class, 'addToFavorite'])->name('customer.market.add-to-favorite');
+
+});
 
 Route::middleware([
     'auth:sanctum',

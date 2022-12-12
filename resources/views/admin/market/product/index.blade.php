@@ -59,15 +59,15 @@
                                         <a href="#" class="btn btn-success btn-sm btn-block dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-expanded="false">
                                             <i class="fa fa-tools"></i> عملیات
                                         </a>
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                            <a href="{{ route('admin.market.gallery.index', $product->id) }}" class="dropdown-item text-right"><i class="fa fa-images"></i> گالری</a>
-                                            <a href="{{ route('admin.market.color.index', $product->id) }}" class="dropdown-item text-right"><i class="fa fa-list-ul"></i> رنگ کالا</a>
-                                            <a href="{{ route('admin.market.guarantee.index', $product->id) }}" class="dropdown-item text-right"><i class="fa fa-shield-alt"></i> گارانتی</a>
-                                            <a href="{{ route('admin.market.product.edit', $product->id) }}" class="dropdown-item text-right"><i class="fa fa-edit"></i> ویرایش</a>
+                                        <div class="dropdown-menu" style="-ms-overflow-style: none !important;" aria-labelledby="dropdownMenuLink">
+                                            <a href="{{ route('admin.market.gallery.index', $product->id) }}" class="dropdown-item text-right" style="font-size: 10px"><i class="fa fa-images"></i> گالری</a>
+                                            <a href="{{ route('admin.market.color.index', $product->id) }}" class="dropdown-item text-right" style="font-size: 10px"><i class="fa fa-list-ul"></i> رنگ کالا</a>
+                                            <a href="{{ route('admin.market.guarantee.index', $product->id) }}" class="dropdown-item text-right" style="font-size: 10px"><i class="fa fa-shield-alt"></i> گارانتی</a>
+                                            <a href="{{ route('admin.market.product.edit', $product->id) }}" class="dropdown-item text-right" style="font-size: 10px"><i class="fa fa-edit"></i> ویرایش</a>
                                             <form class="d-inline" action="{{ route('admin.market.product.destroy', $product->id) }}" method="post">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="dropdown-item text-right delete"><i class="fa fa-window-close"></i> حذف</button>
+                                                <button type="submit" class="dropdown-item text-right delete" style="font-size: 10px"><i class="fa fa-window-close"></i> حذف</button>
                                             </form>
                                         </div>
                                     </div>
